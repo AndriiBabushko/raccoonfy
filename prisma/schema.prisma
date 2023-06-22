@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Track {
+  id            Int          @id @default(autoincrement())
+  artistId      Int
+  artist        Artist       @relation(fields: [artistId], references: [id])
+  name          String
+  text          String?
+  listens       Int          @default(0)
+  picture       String
+  audio         String
+  published     DateTime     @default(now())
+  comments      Comment[]
+  UserAlbum     UserAlbum?   @relation(fields: [userAlbumId], references: [id])
+  userAlbumId   Int?
+  ArtistAlbum   ArtistAlbum? @relation(fields: [artistAlbumId], references: [id])
+  artistAlbumId Int?
+}
+
+model Artist {
+  id      Int           @id @default(autoincrement())
+  name    String
+  surname String
+  tracks  Track[]
+  albums  ArtistAlbum[]
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  trackId   Int
+  author    User     @relation(fields: [userId], references: [id])
+  track     Track    @relation(fields: [trackId], references: [id])
+  text      String
+  published DateTime @default(now())
+}
+
+model User {
+  id       Int         @id @default(autoincrement())
+  name     String      @default("Unknown name")
+  surname  String      @default("Unknown surname")
+  avatar   String      @default("no_user.png")
+  albums   UserAlbum[]
+  comments Comment[]
+}
+
+model UserAlbum {
+  id          Int     @id @default(autoincrement())
+  userId      Int
+  owner       User    @relation(fields: [userId], references: [id])
+  name        String
+  description String
+  picture     String
+  tracks      Track[]
+}
+
+model ArtistAlbum {
+  id          Int     @id @default(autoincrement())
+  artistId    Int
+  author      Artist  @relation(fields: [artistId], references: [id])
+  name        String
+  description String
+  picture     String
+  tracks      Track[]
+}
