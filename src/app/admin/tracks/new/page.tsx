@@ -1,5 +1,3 @@
-export function AdminNewTrack() {
-  return (
-    <>Admin New Track Page</>
-  );
+export default function AdminNewTrack() {
+  return <>Admin New Track Page</>;
 }

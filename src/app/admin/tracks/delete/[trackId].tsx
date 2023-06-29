@@ -1,5 +1,3 @@
-export function AdminDeleteTrack() {
-  return (
-    <>Admin Delete Track Page</>
-  );
+export default function AdminDeleteTrack() {
+  return <>Admin Delete Track Page</>;
 }

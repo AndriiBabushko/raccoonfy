@@ -1,5 +1,3 @@
-export function AdminTracksHome() {
-  return (
-    <>Admin Tracks Home</>
-  );
+export default function AdminTracksHome() {
+  return <>Admin Tracks Home</>;
 }

@@ -1,5 +1,3 @@
-export function AdminUpdateTrack() {
-  return (
-    <>Admin Update Track Page</>
-  );
+export default function AdminUpdateTrack() {
+  return <>Admin Update Track Page</>;
 }
