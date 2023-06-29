@@ -6,12 +6,16 @@
 .pnp.js
 .idea
 
+
+
 # testing
 /coverage
 
 # next.js
 /.next/
 /out/
+/.env
+/.idea
 
 # production
 /build
