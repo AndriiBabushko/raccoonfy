@@ -11,28 +11,34 @@ datasource db {
 }
 
 model Track {
-  id            Int          @id @default(autoincrement())
+  // exact model
+  id        Int       @id @default(autoincrement())
+  name      String
+  explicit  Boolean   @default(false)
+  text      String?
+  listens   Int       @default(0)
+  picture   String
+  audio     String
+  published DateTime  @default(now())
+  comments  Comment[]
+
+  // relations
   artistId      Int
-  artist        Artist       @relation(fields: [artistId], references: [id])
-  name          String
-  text          String?
-  listens       Int          @default(0)
-  picture       String
-  audio         String
-  published     DateTime     @default(now())
-  comments      Comment[]
-  UserAlbum     UserAlbum?   @relation(fields: [userAlbumId], references: [id])
   userAlbumId   Int?
-  ArtistAlbum   ArtistAlbum? @relation(fields: [artistAlbumId], references: [id])
   artistAlbumId Int?
+  userId        Int?
+  artist        Artist       @relation(fields: [artistId], references: [id])
+  UserAlbum     UserAlbum?   @relation(fields: [userAlbumId], references: [id])
+  ArtistAlbum   ArtistAlbum? @relation(fields: [artistAlbumId], references: [id])
+  User          User?        @relation(fields: [userId], references: [id])
 }
 
 model Artist {
-  id      Int           @id @default(autoincrement())
-  name    String
-  surname String
-  tracks  Track[]
-  albums  ArtistAlbum[]
+  id         Int           @id @default(autoincrement())
+  name       String
+  isVerified Boolean       @default(false)
+  tracks     Track[]
+  albums     ArtistAlbum[]
 }
 
 model Comment {
@@ -46,13 +52,15 @@ model Comment {
 }
 
 model User {
-  id       Int         @id @default(autoincrement())
-  name     String      @default("Unknown name")
-  surname  String      @default("Unknown surname")
-  email    String      @unique
-  avatar   String?     @default("no_user.png")
-  albums   UserAlbum[]
-  comments Comment[]
+  id          Int         @id @default(autoincrement())
+  name        String      @default("Unknown name")
+  surname     String      @default("Unknown surname")
+  email       String      @unique
+  avatar      String?     @default("no_user.png")
+  password    String
+  likedTracks Track[]
+  albums      UserAlbum[]
+  comments    Comment[]
 }
 
 model UserAlbum {
