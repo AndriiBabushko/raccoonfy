@@ -34,51 +34,66 @@ model Track {
 }
 
 model Artist {
-  id         Int           @id @default(autoincrement())
+  // exact model
+  id         Int     @id @default(autoincrement())
   name       String
-  isVerified Boolean       @default(false)
-  tracks     Track[]
-  albums     ArtistAlbum[]
+  isVerified Boolean @default(false)
+
+  // relations
+  tracks Track[]
+  albums ArtistAlbum[]
 }
 
 model Comment {
+  // exact model
   id        Int      @id @default(autoincrement())
-  userId    Int
-  trackId   Int
-  author    User     @relation(fields: [userId], references: [id])
-  track     Track    @relation(fields: [trackId], references: [id])
   text      String
   published DateTime @default(now())
+
+  // relations
+  userId  Int
+  trackId Int
+  author  User  @relation(fields: [userId], references: [id])
+  track   Track @relation(fields: [trackId], references: [id])
 }
 
 model User {
-  id          Int         @id @default(autoincrement())
-  name        String      @default("Unknown name")
-  surname     String      @default("Unknown surname")
-  email       String      @unique
-  avatar      String?     @default("no_user.png")
-  password    String
+  // exact model
+  id       Int     @id @default(autoincrement())
+  name     String  @default("Unknown name")
+  surname  String  @default("Unknown surname")
+  email    String  @unique
+  avatar   String? @default("no_user.png")
+  password String
+
+  // relations
   likedTracks Track[]
   albums      UserAlbum[]
   comments    Comment[]
 }
 
 model UserAlbum {
-  id          Int     @id @default(autoincrement())
-  userId      Int
-  owner       User    @relation(fields: [userId], references: [id])
+  // exact model
+  id          Int    @id @default(autoincrement())
   name        String
   description String
   picture     String
-  tracks      Track[]
+
+  // relations
+  userId Int
+  owner  User    @relation(fields: [userId], references: [id])
+  tracks Track[]
 }
 
 model ArtistAlbum {
-  id          Int     @id @default(autoincrement())
-  artistId    Int
-  author      Artist  @relation(fields: [artistId], references: [id])
+  // exact model
+  id          Int    @id @default(autoincrement())
   name        String
   description String
   picture     String
-  tracks      Track[]
+
+  // relations
+  artistId Int
+  author   Artist  @relation(fields: [artistId], references: [id])
+  tracks   Track[]
 }

@@ -1,16 +1,17 @@
 "use client";
-import { ReactNode } from "react";
-import { CacheProvider } from "@chakra-ui/next-js";
-import { ChakraProvider } from "@chakra-ui/react";
+
+import ClientProviders from "@/components/clientProviders";
+import ServerProviders from "@/app/components/serverProviders";
+import React, { ReactNode } from "react";
 
 interface ProvidersProps {
-  children: ReactNode;
+  children: ReactNode | ReactNode[];
 }
 
-export function Providers({ children }: ProvidersProps) {
+export default function Providers({ children }: ProvidersProps) {
   return (
-    <CacheProvider>
-      <ChakraProvider>{children}</ChakraProvider>
-    </CacheProvider>
+    <ServerProviders>
+      <ClientProviders>{children}</ClientProviders>
+    </ServerProviders>
   );
 }

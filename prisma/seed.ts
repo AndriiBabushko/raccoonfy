@@ -3,13 +3,11 @@ import { Prisma, PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 const userData: Prisma.UserCreateInput[] = [
   {
-    name: "Andrii",
-    surname: "Babushko",
+    username: "AndriiRaccoon",
     email: "andriibabushko@gmail.com",
   },
   {
-    name: "Andrii",
-    surname: "Babushko",
+    username: "AndriiBabushko",
     email: "vt211_bas@student.ztu.edu.ua",
   },
 ];

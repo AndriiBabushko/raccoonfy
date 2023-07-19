@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "ES6",
     "lib": ["dom", "dom.iterable", "esnext"],
+    "allowSyntheticDefaultImports": true,
     "allowJs": true,
     "skipLibCheck": true,
+    "baseUrl": ".",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,

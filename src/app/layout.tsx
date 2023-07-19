@@ -1,22 +1,22 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { ReactNode } from "react";
-import { Providers } from "@/app/providers";
-import { Metadata } from "next";
+import React, { ReactNode } from "react";
+
+import Providers from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Raccoonfy",
   description: "The best raccoons' music web application",
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout(props: { children: ReactNode }) {
   return (
     <html lang="en">
-    <body className={inter.className}>
-    <Providers>{children}</Providers>
-    </body>
+      <body className={inter.className}>
+        <Providers>{props.children}</Providers>
+      </body>
     </html>
   );
 }
