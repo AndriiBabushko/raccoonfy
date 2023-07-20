@@ -1,4 +1,6 @@
-import { FC, FormEventHandler, MouseEventHandler } from "react";
+"use client";
+
+import React, { FC, FormEventHandler, MouseEventHandler } from "react";
 
 interface MyButtonProps {
   buttonText: string;
@@ -19,8 +21,6 @@ const MyButton: FC<MyButtonProps> = ({
   onSubmitEvent,
   buttonType = "button",
 }) => {
-  console.log(className);
-
   return (
     <button
       type={buttonType}

@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEventHandler, MouseEventHandler } from "react";
+import React, { FormEventHandler, MouseEventHandler } from "react";
 import Link from "next/link";
 
 interface MyLinkProps {
