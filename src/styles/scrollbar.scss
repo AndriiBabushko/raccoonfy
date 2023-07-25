@@ -1,0 +1,15 @@
+/* track background */
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+/* thumb (the draggable handle) */
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px
+}
+
+/* scrollbar thumb when hovering over it */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #ff0000;
+}
