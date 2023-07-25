@@ -1,5 +1,9 @@
-import { FC, ReactNode } from "react";
-import { AdminNavbar } from "@/components/navbar/AdminNavbar";
+"use client";
+
+import React, { FC, ReactNode } from "react";
+import { Box, Center } from "@chakra-ui/react";
+
+import AdminNavbar from "@/components/navbars/AdminNavbar";
 
 interface AdminLayoutProps {
   children: ReactNode;
@@ -8,8 +12,10 @@ interface AdminLayoutProps {
 export default function AdminLayout({ children }: AdminLayoutProps) {
   return (
     <>
-      <AdminNavbar />
-      {children}
+      <Box>
+        <AdminNavbar />
+        <Center>{children}</Center>
+      </Box>
     </>
   );
 }

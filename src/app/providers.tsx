@@ -5,7 +5,7 @@ import ServerProviders from "@/app/components/serverProviders";
 import React, { ReactNode } from "react";
 
 interface ProvidersProps {
-  children: ReactNode | ReactNode[];
+  children: ReactNode;
 }
 
 export default function Providers({ children }: ProvidersProps) {

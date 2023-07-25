@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
 
+import { authOptions } from "@/lib/auth";
 import LoginButton from "@/components/buttons/LoginButton";
 import RegisterButton from "../components/buttons/RegisterButton";
 import ProfileButton from "../components/buttons/ProfileButton";
