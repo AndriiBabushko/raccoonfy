@@ -4,15 +4,5 @@
     "next": {
       "rootDir": "src/"
     }
-  },
-  "rules": {
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "packageDir": "./",
-        "paths": ["src"],
-        "ignorePackages": ["racconfy/prisma"]
-      }
-    ]
   }
 }
