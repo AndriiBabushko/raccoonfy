@@ -1,16 +1,21 @@
-import { FC, ReactNode } from "react";
+"use client";
 
-import { UserNavbar } from "@/components/navbar/UserNavbar";
+import React, { FC, ReactNode } from "react";
+import { Box, Center, useColorModeValue } from "@chakra-ui/react";
+
+import { UserNavbar } from "@/components/navbars/UserNavbar";
 
 interface UserLayoutProps {
-  children: ReactNode | ReactNode[];
+  children: ReactNode;
 }
 
 export default function UserLayout({ children }: UserLayoutProps) {
   return (
     <>
-      <UserNavbar />
-      {children}
+      <Box as={"div"} h={"100%"} bgColor={useColorModeValue("gray.300", "gray.800")}>
+        <UserNavbar />
+        {children}
+      </Box>
     </>
   );
 }
