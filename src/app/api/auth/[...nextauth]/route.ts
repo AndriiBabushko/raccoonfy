@@ -1,17 +1,51 @@
 import NextAuth, { type NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { compare } from "bcrypt";
 
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Sign in",
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "some.username" },
+        email: { label: "Email", type: "text", placeholder: "some_username@something.com" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const user = { id: "1", username: "some.username" };
-        return user;
+        if (!credentials?.email || !credentials?.password) {
+          return null;
+        }
+
+        const user = await prisma?.user.findUnique({
+          where: {
+            email: credentials?.email,
+          },
+          include: {
+            likedTracks: true,
+            albums: true,
+            comments: true,
+          },
+        });
+
+        if (!user) {
+          return null;
+        }
+
+        const isPasswordValid = await compare(credentials.password, user.password);
+
+        if (!isPasswordValid) {
+          return null;
+        }
+
+        return {
+          id: String(user.id),
+          name: user.name,
+          surname: user.surname,
+          email: user.email,
+          avatar: user.avatar,
+          likedTracks: user.likedTracks,
+          albums: user.albums,
+          comments: user.comments,
+        };
       },
     }),
   ],
