@@ -8,6 +8,8 @@ interface NavBarContainerProps {
 }
 
 export default function NavBarContainer({ children, ...extraStyles }: NavBarContainerProps) {
+  const bgColor = useColorModeValue("gray.100", "gray.900");
+
   return (
     <Flex
       as={"nav"}
@@ -17,7 +19,9 @@ export default function NavBarContainer({ children, ...extraStyles }: NavBarCont
       w="100%"
       mb={4}
       p={3}
-      bg={useColorModeValue("gray.300", "gray.800")}
+      bg={bgColor}
+      borderY={"2px"}
+      borderColor={"gray.900"}
       {...extraStyles}
     >
       {children}
