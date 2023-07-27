@@ -5,4 +5,5 @@ export const pages = {
   premium: "/premium/",
   help: "/help/",
   download: "/download/",
+  search: "/search/",
 } as const;
