@@ -4,7 +4,7 @@ import React, { ReactNode } from "react";
 import { Inter } from "next/font/google";
 
 import Providers from "./providers";
-import UserLayout from "@/app/components/layouts/UserLayout";
+import Layout from "@/app/components/layouts/Layout";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
@@ -18,7 +18,7 @@ export default function RootLayout(props: { children: ReactNode }) {
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <UserLayout>{props.children}</UserLayout>
+          <Layout>{props.children}</Layout>
         </Providers>
       </body>
     </html>
