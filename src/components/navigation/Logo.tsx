@@ -16,7 +16,7 @@ export default function Logo({ ...props }) {
         borderRadius={"full"}
         p={1}
       >
-        <Image src={"assets/raccoon-64.png"} alt={"Raccoonfy Logo"} />
+        <Image src={"/assets/raccoon64.png"} alt={"Logo"} color={useColorModeValue("black", "white")} />
       </Flex>
       <Show below={"sm"}>
         <Text fontSize={"md"} fontWeight={"bold"} color={useColorModeValue("black", "white")} px={4}>
