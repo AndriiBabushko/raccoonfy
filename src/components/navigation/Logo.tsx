@@ -1,28 +1,32 @@
 "use client";
 
 import React from "react";
-import { Box, Flex, Image, Show, Text, useColorModeValue } from "@chakra-ui/react";
+import { Flex, FlexProps, Image, Show, Text, useBreakpointValue, useColorModeValue } from "@chakra-ui/react";
 
-export default function Logo({ ...props }) {
+interface LogoProps extends FlexProps {}
+
+export default function Logo({ ...props }: LogoProps) {
+  const alignMd = useBreakpointValue({ base: "center", md: "initial" });
+
   return (
-    <Box {...props}>
+    <Flex direction={"column"} align={alignMd} {...props}>
       <Flex
         as={"div"}
-        w={"60px"}
-        h={"60px"}
         align={"center"}
         justify={"center"}
         bg={useColorModeValue("", "white")}
         borderRadius={"full"}
         p={1}
+        w={"60px"}
+        h={"60px"}
       >
         <Image src={"/assets/raccoon64.png"} alt={"Logo"} color={useColorModeValue("black", "white")} />
       </Flex>
-      <Show below={"sm"}>
-        <Text fontSize={"md"} fontWeight={"bold"} color={useColorModeValue("black", "white")} px={4}>
-          Some text
+      <Show below={"md"}>
+        <Text fontSize={"md"} fontWeight={"bold"} color={useColorModeValue("black", "white")} py={1}>
+          Raccoonfy
         </Text>
       </Show>
-    </Box>
+    </Flex>
   );
 }
