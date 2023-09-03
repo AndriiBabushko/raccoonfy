@@ -1,4 +1,4 @@
-import "./globals.css";
+import "../styles/globals.scss";
 import "../styles/scrollbar.scss";
 import React, { ReactNode } from "react";
 import { Inter } from "next/font/google";

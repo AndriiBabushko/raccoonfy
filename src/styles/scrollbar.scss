@@ -1,15 +1,26 @@
-/* track background */
-::-webkit-scrollbar-track {
-    background-color: #f1f1f1;
+.boxScrollbar {
+    &::-webkit-scrollbar {
+        width: 12px;
+        opacity: 80%;
+    }
+
+    /* track background */
+    &::-webkit-scrollbar-track {
+        background-color: var(--chakra-colors-gray-100);
+        border-radius: 0 10px 10px 0;
+        opacity: 50%;
+    }
+
+    /* thumb (the draggable handle) */
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--chakra-colors-gray-500);
+        border-radius: 0 10px 10px 0;
+        opacity: 50%;
+    }
+
+    /* scrollbar thumb when hovering over it */
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: #ff0000;
+    }
 }
 
-/* thumb (the draggable handle) */
-::-webkit-scrollbar-thumb {
-    background-color: #888;
-    border-radius: 10px
-}
-
-/* scrollbar thumb when hovering over it */
-::-webkit-scrollbar-thumb:hover {
-    background-color: #ff0000;
-}

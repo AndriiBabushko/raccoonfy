@@ -3,7 +3,7 @@
 import React, { ReactNode } from "react";
 import { CacheProvider } from "@chakra-ui/next-js";
 import { ChakraProvider, ColorModeProvider } from "@chakra-ui/react";
-import { CssReset } from "next/dist/client/components/react-dev-overlay/internal/styles/CssReset";
+import theme from "@/lib/theme";
 
 interface ClientProvidersProps {
   children: ReactNode;
@@ -14,7 +14,7 @@ export default function ClientProviders({ children }: ClientProvidersProps) {
     <>
       <CacheProvider>
         <ChakraProvider>
-          <ColorModeProvider options={{ initialColorMode: "system", useSystemColorMode: true }} />
+          <ColorModeProvider options={theme} />
           {children}
         </ChakraProvider>
       </CacheProvider>

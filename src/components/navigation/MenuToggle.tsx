@@ -18,18 +18,13 @@ import { HamburgerIcon, SearchIcon } from "@chakra-ui/icons";
 
 import MenuItem from "@/components/navigation/MenuItem";
 import ToggleColorMode from "@/components/navigation/ToggleColorMode";
-import { pages } from "@/lib/constants";
+import { pages, styleConstants } from "@/lib/constants";
 import Link from "next/link";
-
-interface MenuToggleProps {
-  toggleHandler: Function;
-  isOpen: boolean;
-}
 
 export default function MenuToggle() {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const iconColor = useColorModeValue("gray.600", "gray.300");
+  const iconColor = useColorModeValue(styleConstants.iconLightColor, styleConstants.iconDarkColor);
 
   return (
     <>

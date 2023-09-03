@@ -1,9 +1,9 @@
 "use client";
 
 import React, { ReactNode } from "react";
-import { Box, Center } from "@chakra-ui/react";
+import { Center } from "@chakra-ui/react";
 
-import AdminNavbar from "@/components/navbars/AdminNavbar";
+import AdminNavbar from "@/components/navbars/admin/AdminNavbar";
 
 interface AdminLayoutProps {
   children: ReactNode;

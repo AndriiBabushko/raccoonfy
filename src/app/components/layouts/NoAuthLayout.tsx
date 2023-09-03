@@ -2,7 +2,7 @@
 
 import React, { ReactNode } from "react";
 import { NoAuthNavbar } from "@/components/navbars/NoAuthNavbar";
-import Footer from "@/components/navbars/Footer";
+import UserLeftFooter from "@/components/navbars/user/UserLeftFooter";
 
 interface NoAuthLayoutProps {
   children: ReactNode;
@@ -13,7 +13,7 @@ export default function NoAuthLayout({ children }: NoAuthLayoutProps) {
     <>
       <NoAuthNavbar />
       {children}
-      <Footer />
+      <UserLeftFooter />
     </>
   );
 }
